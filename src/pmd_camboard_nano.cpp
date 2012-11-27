@@ -268,6 +268,20 @@ void PMDCamboardNano::setBilateralFilter(bool enable)
   throwExceptionIfFailed(pmdProcessingCommand(handle_, 0, 0, cmd));
 }
 
+void PMDCamboardNano::setBilateralFilterSigmaSpatial(double sigma)
+{
+  char cmd[64];
+  sprintf(cmd, "SetBilateralFilterSigmaSpatial %.2f", sigma);
+  throwExceptionIfFailed(pmdProcessingCommand(handle_, 0, 0, cmd));
+}
+
+void PMDCamboardNano::setBilateralFilterEnhanceImage(bool enable)
+{
+  char cmd[64];
+  sprintf(cmd, "SetBilateralFilterEnhanceImage %s", (enable ? "on" : "off"));
+  throwExceptionIfFailed(pmdProcessingCommand(handle_, 0, 0, cmd));
+}
+
 sensor_msgs::ImagePtr PMDCamboardNano::createImageMessage()
 {
   sensor_msgs::ImagePtr msg = boost::make_shared<sensor_msgs::Image>();

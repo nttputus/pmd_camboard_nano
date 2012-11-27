@@ -192,6 +192,15 @@ public:
   /** Enable/disable bilateral filtering of the distances. */
   void setBilateralFilter(bool enable);
 
+  /** Set the spatial sigma parameter of the bilateral filter. */
+  void setBilateralFilterSigmaSpatial(double sigma);
+
+  /** Enable/disable enhanced bilateral filtering of the distances.
+    *
+    *  By incorporating precomputed flags into the bilateral filter it becomes
+    *  more robust against motion blur. */
+  void setBilateralFilterEnhanceImage(bool enable);
+
 private:
 
   sensor_msgs::ImagePtr createImageMessage();
